@@ -2,6 +2,9 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+/*
+Structs are copied directly from the CC13x2 SimpleLink API
+*/
 //! \brief Structure for the TX Packet
 typedef struct {
 	uint8_t dstAddr[8];              //!<  Destination address
@@ -26,29 +29,40 @@ typedef struct {
 	uint8_t payload[128]; //!< payload of RX'ed packet
 } EasyLink_RxPacket;
 
+/*
+Structs are custom made or modified from the EasyLink API
+*/
+//! \brief Structure for the TX Packet Payload
 struct Message_Packet_tx {
-	uint32_t message_str[32];
-	uint32_t message_num[32];
-	float message_float[16];
-	uint32_t message_float_conv[16];
+	uint32_t message_str[32];   //!< 32 bit unsigned integer array containing ascii characters to create a char string
+	uint8_t message_str_len;    //!< 8 bit unsigned integer containing character length of message_str
+	uint32_t message_num[32];   //!< 32 bit unsigned integer array containing numbers up to 0xFFFFFFF
+	float message_float[16];    //!< float array containing float characters
+	uint32_t message_float_conv[16];    //!< 32 bit unsigned integer array containing integer conversion of a message_float
 };
 
+//! \brief Structure for the RX'ed Packet Payload
 struct Message_Packet_rx {
-	char message_str[32];
-	uint32_t message_num;
-	float message_float;
-	uint32_t message_float_conv;
+	char message_str[32];   //!< char array to contain an integer array up to 32 chars (limit TBD)
+	uint8_t message_str_len; //!< 8 bit unsigned integer containing character length of message_str
+	uint32_t message_num;   //!< 32 bit unisgned integer containing a number up to 0xFFFFFFF
+	float message_float;    //!< float number
+	uint32_t message_float_conv;    //!< float converted to an int
 };
 
+//! \brief Structure to access the EasyLink API Rx/Tx typedef structs
 struct RadioOperation {
 	EasyLink_TxPacket easyLinkTxPacket;
 	EasyLink_RxPacket easyLinkRxPacket;
 };
 
+//! \brief global initialization of the above struct
 struct RadioOperation currentRadioOperation;
 
+//! \brief function to package payload data from Message_Packet_tx object for Tx
 size_t package_data(struct Message_Packet_tx sen) {
 
+    // Push message payload content into Tx Packet via bit-shifting
 	currentRadioOperation.easyLinkTxPacket.payload[0] = (sen.message_str[0] & 0xFF000000) >> 24;
 	currentRadioOperation.easyLinkTxPacket.payload[1] = (sen.message_str[0] & 0x00FF0000) >> 16;
 	currentRadioOperation.easyLinkTxPacket.payload[2] = (sen.message_str[0] & 0xFF00) >> 8;
@@ -64,24 +78,31 @@ size_t package_data(struct Message_Packet_tx sen) {
 	currentRadioOperation.easyLinkTxPacket.payload[10] = (sen.message_str[2] & 0xFF00) >> 8;
 	currentRadioOperation.easyLinkTxPacket.payload[11] = (sen.message_str[2]) & 0xFF;
 
-	currentRadioOperation.easyLinkTxPacket.payload[12] = (sen.message_num[0] & 0xFF000000) >> 24;
-	currentRadioOperation.easyLinkTxPacket.payload[13] = (sen.message_num[0] & 0x00FF0000) >> 16;
-	currentRadioOperation.easyLinkTxPacket.payload[14] = (sen.message_num[0] & 0xFF00) >> 8;
-	currentRadioOperation.easyLinkTxPacket.payload[15] = (sen.message_num[0]) & 0xFF;
+	currentRadioOperation.easyLinkTxPacket.payload[12] = (sen.message_str_len);
 
-	currentRadioOperation.easyLinkTxPacket.payload[16] = (sen.message_float_conv[0] & 0xFF000000) >> 24;
-	currentRadioOperation.easyLinkTxPacket.payload[17] = (sen.message_float_conv[0] & 0x00FF0000) >> 16;
-	currentRadioOperation.easyLinkTxPacket.payload[18] = (sen.message_float_conv[0] & 0xFF00) >> 8;
-	currentRadioOperation.easyLinkTxPacket.payload[19] = (sen.message_float_conv[0]) & 0xFF;
+	currentRadioOperation.easyLinkTxPacket.payload[13] = (sen.message_num[0] & 0xFF000000) >> 24;
+	currentRadioOperation.easyLinkTxPacket.payload[14] = (sen.message_num[0] & 0x00FF0000) >> 16;
+	currentRadioOperation.easyLinkTxPacket.payload[15] = (sen.message_num[0] & 0xFF00) >> 8;
+	currentRadioOperation.easyLinkTxPacket.payload[16] = (sen.message_num[0]) & 0xFF;
+
+	currentRadioOperation.easyLinkTxPacket.payload[17] = (sen.message_float_conv[0] & 0xFF000000) >> 24;
+	currentRadioOperation.easyLinkTxPacket.payload[18] = (sen.message_float_conv[0] & 0x00FF0000) >> 16;
+	currentRadioOperation.easyLinkTxPacket.payload[19] = (sen.message_float_conv[0] & 0xFF00) >> 8;
+	currentRadioOperation.easyLinkTxPacket.payload[20] = (sen.message_float_conv[0]) & 0xFF;
 
 	currentRadioOperation.easyLinkTxPacket.len = sizeof(struct Message_Packet_tx);
+
 	return 0;
 }
 
 
-
+//! \brief function to decode payload data from easyLinkRxPacket object
 size_t decode_data(struct Message_Packet_rx con) {
 
+    // Get string length from payload
+    con.message_str_len = (currentRadioOperation.easyLinkRxPacket.payload[12]);
+
+    // Push contents of payload into char array
 	con.message_str[0] = (currentRadioOperation.easyLinkRxPacket.payload[0]);
 	con.message_str[1] = (currentRadioOperation.easyLinkRxPacket.payload[1]);
 	con.message_str[2] = (currentRadioOperation.easyLinkRxPacket.payload[2]);
@@ -95,36 +116,50 @@ size_t decode_data(struct Message_Packet_rx con) {
 	con.message_str[10] = (currentRadioOperation.easyLinkRxPacket.payload[10]);
 	con.message_str[11] = (currentRadioOperation.easyLinkRxPacket.payload[11]);
 
-	con.message_num = (currentRadioOperation.easyLinkRxPacket.payload[12] << 24) | (currentRadioOperation.easyLinkRxPacket.payload[13] << 16) | (currentRadioOperation.easyLinkRxPacket.payload[14] << 8) | (currentRadioOperation.easyLinkRxPacket.payload[15]);
+    // Push contents of payload array into a uint32 via bit-shifting
+	con.message_num = (currentRadioOperation.easyLinkRxPacket.payload[13] << 24) | (currentRadioOperation.easyLinkRxPacket.payload[14] << 16) | (currentRadioOperation.easyLinkRxPacket.payload[15] << 8) | (currentRadioOperation.easyLinkRxPacket.payload[16]);
 
-	con.message_float_conv = (currentRadioOperation.easyLinkRxPacket.payload[16] << 24) | (currentRadioOperation.easyLinkRxPacket.payload[17] << 16) | (currentRadioOperation.easyLinkRxPacket.payload[18] << 8) | (currentRadioOperation.easyLinkRxPacket.payload[19]);
+	// Push contents of payload array into a uint32 via bit-shifting
+	con.message_float_conv = (currentRadioOperation.easyLinkRxPacket.payload[17] << 24) | (currentRadioOperation.easyLinkRxPacket.payload[18] << 16) | (currentRadioOperation.easyLinkRxPacket.payload[19] << 8) | (currentRadioOperation.easyLinkRxPacket.payload[20]);
 
+    // Convert above integer into float
 	con.message_float = (float) con.message_float_conv / 1000000;
 
 	printf("\n\nDecoded string: %s\n", con.message_str);
+	printf("Decoded string char length: %d\n", con.message_str_len);
 	printf("Decoded number: %x\n", con.message_num);
 	printf("Decoded converted float: %d\n", con.message_float_conv);
 	printf("Decoded float: %f\n", con.message_float);
+
 	return 0;
 }
 
 
 int main() {
 
-	struct Message_Packet_tx sensor;
-	struct Message_Packet_rx concentrator;
+	struct Message_Packet_tx sensor;    // Message_Packet_tx object (for transmitting)
+	struct Message_Packet_rx concentrator; // Message_Packet_rx object (for receiving)
 
+	/* Load data into sensor message payload */
+	// 4 ascii chars per array value
 	sensor.message_str[0] = 'hell';
 	sensor.message_str[1] = 'o wo';
 	sensor.message_str[2] = 'rld!';
+	// Length of above message string
+	sensor.message_str_len = 12;
+	// Message number from 0 to 0xFFFFFFF
 	sensor.message_num[0] = 0xABCDEF1;
+	// Message float up to 7 digits
 	sensor.message_float[0] = 1.234567;
+	// integer conversion of above float
 	sensor.message_float_conv[0] = sensor.message_float[0] * 1000000;
 
+	// Package payload data from sensor object for Tx
 	package_data(sensor);
 
 	printf("Size of payload is %d\n", currentRadioOperation.easyLinkTxPacket.len);
 
+    // Print contents of unformatted payload data
 	printf("Payload string: \n");
 	printf("%c", currentRadioOperation.easyLinkTxPacket.payload[0]);
 	printf("%c", currentRadioOperation.easyLinkTxPacket.payload[1]);
@@ -144,20 +179,24 @@ int main() {
 	printf("%c", currentRadioOperation.easyLinkTxPacket.payload[11]);
 	printf("\n");
 
+	printf("Payload string char length: \n");
+	printf("%d", currentRadioOperation.easyLinkTxPacket.payload[12]);
+	printf("\n");
+
 	printf("Payload num: \n");
-	printf("%x", currentRadioOperation.easyLinkTxPacket.payload[12]);
 	printf("%x", currentRadioOperation.easyLinkTxPacket.payload[13]);
 	printf("%x", currentRadioOperation.easyLinkTxPacket.payload[14]);
 	printf("%x", currentRadioOperation.easyLinkTxPacket.payload[15]);
+	printf("%x", currentRadioOperation.easyLinkTxPacket.payload[16]);
 	printf("\n");
 
 	printf("Payload float: \n");
-	printf("%x", currentRadioOperation.easyLinkTxPacket.payload[16]);
 	printf("%x", currentRadioOperation.easyLinkTxPacket.payload[17]);
 	printf("%x", currentRadioOperation.easyLinkTxPacket.payload[18]);
 	printf("%x", currentRadioOperation.easyLinkTxPacket.payload[19]);
+	printf("%x", currentRadioOperation.easyLinkTxPacket.payload[20]);
 
-
+    // Simulate actual sensor RF transmission to concentrator
 	currentRadioOperation.easyLinkRxPacket.payload[0] = currentRadioOperation.easyLinkTxPacket.payload[0];
 	currentRadioOperation.easyLinkRxPacket.payload[1] = currentRadioOperation.easyLinkTxPacket.payload[1];
 	currentRadioOperation.easyLinkRxPacket.payload[2] = currentRadioOperation.easyLinkTxPacket.payload[2];
@@ -174,15 +213,18 @@ int main() {
 	currentRadioOperation.easyLinkRxPacket.payload[11] = currentRadioOperation.easyLinkTxPacket.payload[11];
 
 	currentRadioOperation.easyLinkRxPacket.payload[12] = currentRadioOperation.easyLinkTxPacket.payload[12];
+
 	currentRadioOperation.easyLinkRxPacket.payload[13] = currentRadioOperation.easyLinkTxPacket.payload[13];
 	currentRadioOperation.easyLinkRxPacket.payload[14] = currentRadioOperation.easyLinkTxPacket.payload[14];
 	currentRadioOperation.easyLinkRxPacket.payload[15] = currentRadioOperation.easyLinkTxPacket.payload[15];
-
 	currentRadioOperation.easyLinkRxPacket.payload[16] = currentRadioOperation.easyLinkTxPacket.payload[16];
+
 	currentRadioOperation.easyLinkRxPacket.payload[17] = currentRadioOperation.easyLinkTxPacket.payload[17];
 	currentRadioOperation.easyLinkRxPacket.payload[18] = currentRadioOperation.easyLinkTxPacket.payload[18];
 	currentRadioOperation.easyLinkRxPacket.payload[19] = currentRadioOperation.easyLinkTxPacket.payload[19];
+	currentRadioOperation.easyLinkRxPacket.payload[20] = currentRadioOperation.easyLinkTxPacket.payload[20];
 
+    // Decode payload data Rx'ed by concentrator object
 	decode_data(concentrator);
 
 	return 0;
