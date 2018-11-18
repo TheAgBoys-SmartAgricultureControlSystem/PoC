@@ -101,25 +101,17 @@ size_t decode_data(struct Message_Packet_rx con) {
 
     // Get string length from payload
     con.message_str_len = (currentRadioOperation.easyLinkRxPacket.payload[12]);
+    size_t length = con.message_str_len;
 
     // Push contents of payload into char array
-	con.message_str[0] = (currentRadioOperation.easyLinkRxPacket.payload[0]);
-	con.message_str[1] = (currentRadioOperation.easyLinkRxPacket.payload[1]);
-	con.message_str[2] = (currentRadioOperation.easyLinkRxPacket.payload[2]);
-	con.message_str[3] = (currentRadioOperation.easyLinkRxPacket.payload[3]);
-	con.message_str[4] = (currentRadioOperation.easyLinkRxPacket.payload[4]);
-	con.message_str[5] = (currentRadioOperation.easyLinkRxPacket.payload[5]);
-	con.message_str[6] = (currentRadioOperation.easyLinkRxPacket.payload[6]);
-	con.message_str[7] = (currentRadioOperation.easyLinkRxPacket.payload[7]);
-	con.message_str[8] = (currentRadioOperation.easyLinkRxPacket.payload[8]);
-	con.message_str[9] = (currentRadioOperation.easyLinkRxPacket.payload[9]);
-	con.message_str[10] = (currentRadioOperation.easyLinkRxPacket.payload[10]);
-	con.message_str[11] = (currentRadioOperation.easyLinkRxPacket.payload[11]);
+	for(int i = 0; i < length; i++){
+        con.message_str[i] = (currentRadioOperation.easyLinkRxPacket.payload[i]);
+	}
 
-    // Push contents of payload array into a uint32 via bit-shifting
+    // Push contents of payload array into a uint32 integer via bit-shifting
 	con.message_num = (currentRadioOperation.easyLinkRxPacket.payload[13] << 24) | (currentRadioOperation.easyLinkRxPacket.payload[14] << 16) | (currentRadioOperation.easyLinkRxPacket.payload[15] << 8) | (currentRadioOperation.easyLinkRxPacket.payload[16]);
 
-	// Push contents of payload array into a uint32 via bit-shifting
+	// Push contents of payload array into a uint32 integer via bit-shifting
 	con.message_float_conv = (currentRadioOperation.easyLinkRxPacket.payload[17] << 24) | (currentRadioOperation.easyLinkRxPacket.payload[18] << 16) | (currentRadioOperation.easyLinkRxPacket.payload[19] << 8) | (currentRadioOperation.easyLinkRxPacket.payload[20]);
 
     // Convert above integer into float
@@ -141,7 +133,7 @@ int main() {
 	struct Message_Packet_rx concentrator; // Message_Packet_rx object (for receiving)
 
 	/* Load data into sensor message payload */
-	// 4 ascii chars per array value
+	// 4 ascii chars per array value (uint8)
 	sensor.message_str[0] = 'hell';
 	sensor.message_str[1] = 'o wo';
 	sensor.message_str[2] = 'rld!';

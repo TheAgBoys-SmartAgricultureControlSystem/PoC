@@ -101,8 +101,10 @@ size_t decode_data(struct Message_Packet_rx con) {
 
     // Get string length from payload
     con.message_str_len = (currentRadioOperation.easyLinkRxPacket.payload[12]);
-    
+    size_t length = con.message_str_len;
+
     // Push contents of payload into char array
+	/*
 	con.message_str[0] = (currentRadioOperation.easyLinkRxPacket.payload[0]);
 	con.message_str[1] = (currentRadioOperation.easyLinkRxPacket.payload[1]);
 	con.message_str[2] = (currentRadioOperation.easyLinkRxPacket.payload[2]);
@@ -115,6 +117,11 @@ size_t decode_data(struct Message_Packet_rx con) {
 	con.message_str[9] = (currentRadioOperation.easyLinkRxPacket.payload[9]);
 	con.message_str[10] = (currentRadioOperation.easyLinkRxPacket.payload[10]);
 	con.message_str[11] = (currentRadioOperation.easyLinkRxPacket.payload[11]);
+	*/
+	
+	for(int i = 0; i < length; i++){
+        con.message_str[i] = (currentRadioOperation.easyLinkRxPacket.payload[i]);
+	}
 
     // Push contents of payload array into a uint32 via bit-shifting
 	con.message_num = (currentRadioOperation.easyLinkRxPacket.payload[13] << 24) | (currentRadioOperation.easyLinkRxPacket.payload[14] << 16) | (currentRadioOperation.easyLinkRxPacket.payload[15] << 8) | (currentRadioOperation.easyLinkRxPacket.payload[16]);
