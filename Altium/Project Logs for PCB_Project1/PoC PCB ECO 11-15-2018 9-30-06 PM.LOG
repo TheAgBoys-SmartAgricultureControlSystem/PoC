@@ -1,0 +1,44 @@
+Removed Pin From Net: NetName=Net*_1 Pin=*-1
+Removed Pin From Net: NetName=GND Pin=*-2
+Removed Pin From Net: NetName=RF_SWITCH Pin=*-2
+Removed Pin From Net: NetName=Net*_3 Pin=*-3
+Change Component Comment : Designator=* Old Comment=Temp New Comment=PE4250
+Added Component: Designator=3t(SOT95P237X112-3N)
+Add component. Clean all parameters for all variants
+Added Pin To Net: NetName=Net*_1 Pin=*-1
+Added Pin To Net: NetName=Net*_2 Pin=*-2
+Added Pin To Net: NetName=Net*_3 Pin=*-3
+Added Pin To Net: NetName=Net*_3 Pin=C41-2
+Added Pin To Net: NetName=Net*_3 Pin=L31-2
+Added Pin To Net: NetName=Net*_3 Pin=L41-1
+Added Pin To Net: NetName=Net3t_1T Pin=P?-1
+Added Net: Name=Net3t_1T
+Added Pin To Net: NetName=Net3t_2T Pin=P?-2
+Added Net: Name=Net3t_2T
+Added Pin To Net: NetName=Net3t_3T Pin=P?-3
+Added Net: Name=Net3t_3T
+Added Net: Name=Net*_1O
+Added Pin To Net: NetName=Net*_1P Pin=C131-1
+Added Pin To Net: NetName=Net*_1P Pin=C221-1
+Added Pin To Net: NetName=Net*_1P Pin=C341-1
+Added Pin To Net: NetName=Net*_1P Pin=C342-1
+Added Pin To Net: NetName=Net*_1P Pin=C441-1
+Added Pin To Net: NetName=Net*_1P Pin=C484-1
+Added Pin To Net: NetName=Net*_1P Pin=C485-1
+Added Pin To Net: NetName=Net*_1P Pin=C?-1
+Added Pin To Net: NetName=Net*_1P Pin=FL1-2
+Added Pin To Net: NetName=Net*_1P Pin=R351-2
+Added Net: Name=Net*_1P
+Added Net: Name=Net*_3O
+Added Pin To Net: NetName=Net*_3P Pin=C483-1
+Added Net: Name=Net*_3P
+Added Pin To Net: NetName=Net*_5P Pin=C14-2
+Added Pin To Net: NetName=Net*_5P Pin=L14-2
+Added Net: Name=Net*_5P
+Added Pin To Net: NetName=Net*_8P Pin=C36-2
+Added Net: Name=Net*_8P
+Added Member To Class: ClassName=Sheet1 Member=Component * PE4250
+Added Member To Class: ClassName=Sheet1 Member=Component * Osc
+Added Member To Class: ClassName=Sheet1 Member=Component 3t Temp
+Added Room: Name=Sheet1
+Added Room: Name=Sheet2
