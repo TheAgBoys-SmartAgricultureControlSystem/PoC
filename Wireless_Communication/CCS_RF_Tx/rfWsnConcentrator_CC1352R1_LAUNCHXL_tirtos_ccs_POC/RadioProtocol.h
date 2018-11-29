@@ -61,7 +61,7 @@ struct DualModeSensorPacket {
     uint32_t message_str[6];
     uint8_t message_str_len;
     //bool concLedToggle;
-}
+};
 
 struct AckPacket {
     struct PacketHeader header;

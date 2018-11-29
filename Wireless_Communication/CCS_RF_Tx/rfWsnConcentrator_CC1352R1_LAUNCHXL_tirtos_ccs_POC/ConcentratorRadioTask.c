@@ -128,8 +128,8 @@ void ConcentratorRadioTask_init(void) {
 
     /* Open LED pins */
     ledPinHandle = PIN_open(&ledPinState, ledPinTable);
-	if (!ledPinHandle)
-	{
+    if (!ledPinHandle)
+    {
         System_abort("Error initializing board 3.3V domain pins\n");
     }
 
@@ -154,14 +154,14 @@ void ConcentratorRadioTask_registerPacketReceivedCallback(ConcentratorRadio_Pack
 static void concentratorRadioTaskFunction(UArg arg0, UArg arg1)
 {
     /* Initialize EasyLink */
-	EasyLink_Params easyLink_params;
+    EasyLink_Params easyLink_params;
     EasyLink_Params_init(&easyLink_params);
-	
-	easyLink_params.ui32ModType = RADIO_EASYLINK_MODULATION;
-	
-	if(EasyLink_init(&easyLink_params) != EasyLink_Status_Success){ 
-		System_abort("EasyLink_init failed");
-	}	
+
+    easyLink_params.ui32ModType = RADIO_EASYLINK_MODULATION;
+
+    if(EasyLink_init(&easyLink_params) != EasyLink_Status_Success){
+        System_abort("EasyLink_init failed");
+    }
 
     /* If you wich to use a frequency other than the default use
      * the below API
@@ -214,7 +214,7 @@ static void concentratorRadioTaskFunction(UArg arg0, UArg arg1)
 }
 
 static void sendAck(uint8_t latestSourceAddress) {
-	uint32_t absTime;
+    uint32_t absTime;
 
     /* Set destinationAdress, but use EasyLink layers destination adress capability */
     txPacket.dstAddr[0] = latestSourceAddress;
@@ -223,17 +223,17 @@ static void sendAck(uint8_t latestSourceAddress) {
      * Note that the EasyLink API will implcitily both add the length byte and the destination address byte. */
     memcpy(txPacket.payload, &ackPacket.header, sizeof(ackPacket));
     txPacket.len = sizeof(ackPacket);
-	
-	if(EasyLink_getAbsTime(&absTime) != EasyLink_Status_Success)
-	{ 
-		// Problem getting absolute time
-		// Still send ACK 
-		txPacket.absTime = 0; 
-	} 
-	else
-	{
-		txPacket.absTime = absTime + EasyLink_us_To_RadioTime(CONCENTRATORRADIO_ACK_DELAY);
-	}
+
+    if(EasyLink_getAbsTime(&absTime) != EasyLink_Status_Success)
+    {
+        // Problem getting absolute time
+        // Still send ACK
+        txPacket.absTime = 0;
+    }
+    else
+    {
+        txPacket.absTime = absTime + EasyLink_us_To_RadioTime(CONCENTRATORRADIO_ACK_DELAY);
+    }
 
     /* Send packet  */
     if (EasyLink_transmit(&txPacket) != EasyLink_Status_Success)

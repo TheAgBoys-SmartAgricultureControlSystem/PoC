@@ -231,7 +231,7 @@ static void packetReceivedCallback(union ConcentratorPacket* packet, int8_t rssi
         /* Save the values */
         latestActiveAdcSensorNode.address = packet->header.sourceAddress;
         latestActiveAdcSensorNode.latestAdcValue = packet->adcSensorPacket.adcValue;
-        latestActiveAdcSensorNode.button = 0; //no button value in ADC packet
+        //latestActiveAdcSensorNode.button = 0; //no button value in ADC packet
         latestActiveAdcSensorNode.latestRssi = rssi;
 
         Event_post(concentratorEventHandle, CONCENTRATOR_EVENT_NEW_ADC_SENSOR_VALUE);
@@ -248,18 +248,18 @@ static void packetReceivedCallback(union ConcentratorPacket* packet, int8_t rssi
 
         Event_post(concentratorEventHandle, CONCENTRATOR_EVENT_NEW_ADC_SENSOR_VALUE);
 
-        if( packet->dmSensorPacket.concLedToggle && (ledBlinkCnt == 0) )
-        {
+       // if( packet->dmSensorPacket.concLedToggle && (ledBlinkCnt == 0) )
+        //{
             /* Turn LED on */
-            PIN_setOutputValue(identifyLedPinHandle, CONCENTRATOR_IDENTIFY_LED, 1);
+          //  PIN_setOutputValue(identifyLedPinHandle, CONCENTRATOR_IDENTIFY_LED, 1);
 
             /* Setup timeout to blink LED */
-            Clock_setTimeout(ledBlinkClockHandle,
-                    CONCENTRATOR_LED_BLINK_ON_DURATION_MS * 1000 / Clock_tickPeriod);
+            //Clock_setTimeout(ledBlinkClockHandle,
+              //      CONCENTRATOR_LED_BLINK_ON_DURATION_MS * 1000 / Clock_tickPeriod);
 
             /* Start sensor stub clock */
-            Clock_start(ledBlinkClockHandle);
-        }
+           // Clock_start(ledBlinkClockHandle);
+       // }
 
     }
 }
