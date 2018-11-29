@@ -91,7 +91,7 @@
 struct AdcSensorNode {
     uint8_t address;
     uint16_t latestAdcValue;
-    uint8_t button;
+    uint32_t latest_number;
     int8_t latestRssi;
 };
 
@@ -243,7 +243,7 @@ static void packetReceivedCallback(union ConcentratorPacket* packet, int8_t rssi
         /* Save the values */
         latestActiveAdcSensorNode.address = packet->header.sourceAddress;
         latestActiveAdcSensorNode.latestAdcValue = packet->dmSensorPacket.adcValue;
-        latestActiveAdcSensorNode.button = packet->dmSensorPacket.button;
+        latestActiveAdcSensorNode.latest_number = packet->dmSensorPacket.message_num[0];
         latestActiveAdcSensorNode.latestRssi = rssi;
 
         Event_post(concentratorEventHandle, CONCENTRATOR_EVENT_NEW_ADC_SENSOR_VALUE);
@@ -285,7 +285,7 @@ static void updateNode(struct AdcSensorNode* node) {
         {
             knownSensorNodes[i].latestAdcValue = node->latestAdcValue;
             knownSensorNodes[i].latestRssi = node->latestRssi;
-            knownSensorNodes[i].button = node->button;
+            knownSensorNodes[i].latest_number = node->latest_number;
             break;
         }
     }
@@ -323,12 +323,12 @@ static void updateLcd(void) {
     {
         /* print to LCD */
         Display_printf(hDisplayLcd, currentLcdLine, 0, "0x%02x  0x%02x  %d   %04d",
-                nodePointer->address, nodePointer->latestAdcValue, nodePointer->button,
+                nodePointer->address, nodePointer->latestAdcValue, nodePointer->latest_number,
                 nodePointer->latestRssi);
 
         /* print to UART */
         Display_printf(hDisplaySerial, 0, 0, "0x%02x    0x%02x    %d    %04d",
-                nodePointer->address, nodePointer->latestAdcValue, nodePointer->button,
+                nodePointer->address, nodePointer->latestAdcValue, nodePointer->latest_number,
                 nodePointer->latestRssi);
 
         nodePointer++;

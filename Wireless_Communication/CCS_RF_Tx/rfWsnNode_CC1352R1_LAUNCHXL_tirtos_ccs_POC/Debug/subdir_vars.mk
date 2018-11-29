@@ -5,9 +5,6 @@
 SHELL = cmd.exe
 
 # Add inputs and outputs from these tool invocations to the build variables 
-CMD_SRCS += \
-../CC1352R1_LAUNCHXL_TIRTOS.cmd 
-
 C_SRCS += \
 ../CC1352R1_LAUNCHXL.c \
 ../CC1352R1_LAUNCHXL_fxns.c \

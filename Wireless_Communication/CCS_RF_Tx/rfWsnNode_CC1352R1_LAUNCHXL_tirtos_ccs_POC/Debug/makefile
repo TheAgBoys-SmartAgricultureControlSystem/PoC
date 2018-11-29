@@ -4,12 +4,10 @@
 
 SHELL = cmd.exe
 
-CG_TOOL_ROOT := C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.3.LTS
+CG_TOOL_ROOT := C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS
 
-GEN_OPTS += C:/Users/Dhruva/workspace_v8/tirtos_builds_CC1352R1_LAUNCHXL_release_ccs_2_30_00_45/Debug/configPkg/compiler.opt
-GEN_OPTS__FLAG := --cmd_file="C:/Users/Dhruva/workspace_v8/tirtos_builds_CC1352R1_LAUNCHXL_release_ccs_2_30_00_45/Debug/configPkg/compiler.opt"
-GEN_CMDS += C:/Users/Dhruva/workspace_v8/tirtos_builds_CC1352R1_LAUNCHXL_release_ccs_2_30_00_45/Debug/configPkg/linker.cmd
-GEN_CMDS__FLAG := -l"C:/Users/Dhruva/workspace_v8/tirtos_builds_CC1352R1_LAUNCHXL_release_ccs_2_30_00_45/Debug/configPkg/linker.cmd"
+GEN_OPTS__FLAG := 
+GEN_CMDS__FLAG := 
 
 ORDERED_OBJS += \
 "./CC1352R1_LAUNCHXL.obj" \
@@ -25,14 +23,13 @@ ORDERED_OBJS += \
 "./sce/scif_osal_tirtos.obj" \
 "./smartrf_settings/smartrf_settings.obj" \
 "./smartrf_settings/smartrf_settings_predefined.obj" \
-"../CC1352R1_LAUNCHXL_TIRTOS.cmd" \
--l"C:/ti/simplelink_cc13x2_sdk_2_30_00_45/source/ti/display/lib/display.aem4f" \
--l"C:/ti/simplelink_cc13x2_sdk_2_30_00_45/source/ti/grlib/lib/ccs/m4f/grlib.a" \
--l"C:/ti/simplelink_cc13x2_sdk_2_30_00_45/source/ti/drivers/rf/lib/rf_multiMode_cc13x2_v1.aem4f" \
--l"C:/ti/simplelink_cc13x2_sdk_2_30_00_45/source/ti/drivers/lib/drivers_cc13x2_v1.aem4f" \
--l"C:/ti/simplelink_cc13x2_sdk_2_30_00_45/kernel/tirtos/packages/ti/dpl/lib/dpl_cc13x2_v1.aem4f" \
+-l"/source/ti/display/lib/display.aem4f" \
+-l"/source/ti/grlib/lib/ccs/m4f/grlib.a" \
+-l"/source/ti/drivers/rf/lib/rf_multiMode_cc13x2_v1.aem4f" \
+-l"/source/ti/drivers/lib/drivers_cc13x2_v1.aem4f" \
+-l"/kernel/tirtos/packages/ti/dpl/lib/dpl_cc13x2_v1.aem4f" \
 $(GEN_CMDS__FLAG) \
--l"C:/ti/simplelink_cc13x2_sdk_2_30_00_45/source/ti/devices/cc13x2_cc26x2_v1/driverlib/bin/ccs/driverlib.lib" \
+-l"/source/ti/devices/cc13x2_cc26x2_v1/driverlib/bin/ccs/driverlib.lib" \
 -llibc.a \
 
 -include ../makefile.init
@@ -159,24 +156,21 @@ BIN_OUTPUTS__QUOTED += \
 
 
 # All Target
-all: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
+all: $(OBJS) $(GEN_CMDS)
 	@$(MAKE) --no-print-directory -Onone "rfWsnNode_CC1352R1_LAUNCHXL_tirtos_ccs_POC.out"
 
-dependents:
-	-cd C:/Users/Dhruva/workspace_v8/tirtos_builds_CC1352R1_LAUNCHXL_release_ccs_2_30_00_45/Debug && $(MAKE) clean all
-
 # Tool invocations
-rfWsnNode_CC1352R1_LAUNCHXL_tirtos_ccs_POC.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS) C:/Users/Dhruva/workspace_v8/tirtos_builds_CC1352R1_LAUNCHXL_release_ccs_2_30_00_45/Debug/tirtos_builds_CC1352R1_LAUNCHXL_release_ccs_2_30_00_45.lib
+rfWsnNode_CC1352R1_LAUNCHXL_tirtos_ccs_POC.out: $(OBJS) $(GEN_CMDS)
 	@echo 'Building target: "$@"'
 	@echo 'Invoking: ARM Linker'
-	"C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.3.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --define=DeviceFamily_CC13X2 --define=CCFG_FORCE_VDDR_HH=0 -g --diag_warning=225 --diag_warning=255 --diag_wrap=off --display_error_number --gen_func_subsections=on -z -m"rfWsnNode_CC1352R1_LAUNCHXL_tirtos_ccs_POC.map" -i"C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.3.LTS/lib" --diag_wrap=off --display_error_number --warn_sections --xml_link_info="rfWsnNode_CC1352R1_LAUNCHXL_tirtos_ccs_POC_linkInfo.xml" --rom_model -o "rfWsnNode_CC1352R1_LAUNCHXL_tirtos_ccs_POC.out" $(ORDERED_OBJS)
+	"C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --define=DeviceFamily_CC13X2 --define=CCFG_FORCE_VDDR_HH=0 -g --diag_warning=225 --diag_warning=255 --diag_wrap=off --display_error_number --gen_func_subsections=on -z -m"rfWsnNode_CC1352R1_LAUNCHXL_tirtos_ccs_POC.map" -i"C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/lib" --diag_wrap=off --display_error_number --warn_sections --xml_link_info="rfWsnNode_CC1352R1_LAUNCHXL_tirtos_ccs_POC_linkInfo.xml" --rom_model -o "rfWsnNode_CC1352R1_LAUNCHXL_tirtos_ccs_POC.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: "$@"'
 	@echo ' '
 
 rfWsnNode_CC1352R1_LAUNCHXL_tirtos_ccs_POC.hex: $(EXE_OUTPUTS)
 	@echo 'Building files: $(strip $(EXE_OUTPUTS__QUOTED))'
 	@echo 'Invoking: ARM Hex Utility'
-	"C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.3.LTS/bin/armhex"  -o "rfWsnNode_CC1352R1_LAUNCHXL_tirtos_ccs_POC.hex" $(EXE_OUTPUTS__QUOTED)
+	"C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/bin/armhex"  -o "rfWsnNode_CC1352R1_LAUNCHXL_tirtos_ccs_POC.hex" $(EXE_OUTPUTS__QUOTED)
 	@echo 'Finished building: $(strip $(EXE_OUTPUTS__QUOTED))'
 	@echo ' '
 
@@ -190,7 +184,6 @@ clean:
 
 .PHONY: all clean dependents
 .SECONDARY:
-C:/Users/Dhruva/workspace_v8/tirtos_builds_CC1352R1_LAUNCHXL_release_ccs_2_30_00_45/Debug/tirtos_builds_CC1352R1_LAUNCHXL_release_ccs_2_30_00_45.lib:
 
 -include ../makefile.targets
 

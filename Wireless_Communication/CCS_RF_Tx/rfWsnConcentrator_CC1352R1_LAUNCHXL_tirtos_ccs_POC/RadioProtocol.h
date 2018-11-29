@@ -56,11 +56,12 @@ struct AdcSensorPacket {
 struct DualModeSensorPacket {
     struct PacketHeader header;
     uint16_t adcValue;
-    uint16_t batt;
+    uint32_t message_num[2];
     uint32_t time100MiliSec;
-    uint8_t button;
-    bool concLedToggle;
-};
+    uint32_t message_str[6];
+    uint8_t message_str_len;
+    //bool concLedToggle;
+}
 
 struct AckPacket {
     struct PacketHeader header;
