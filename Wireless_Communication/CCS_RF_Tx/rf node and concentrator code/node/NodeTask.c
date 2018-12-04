@@ -123,7 +123,7 @@ static uint8_t nodeAddress = 0;
 static void nodeTaskFunction(UArg arg0, UArg arg1);
 static void updateLcd(void);
 static void fastReportTimeoutCallback(UArg arg0);
-static void adcCallback(uint16_t adcValue);
+static void adcCallback(uint16_t adcValue, uint32_t message_num);
 static void buttonCallback(PIN_Handle handle, PIN_Id pinId);
 
 /***** Function definitions *****/
@@ -255,13 +255,14 @@ static void updateLcd(void)
     /* Print to UART clear screen, put cuser to beggining of terminal and print the header */
     Display_printf(hDisplaySerial, 0, 0, "\033[2J \033[0;0HNode ID: 0x%02x", nodeAddress);
     Display_printf(hDisplaySerial, 0, 0, "Node ADC Reading: %04d", latestAdcValue);
-    Display_printf(hDisplaySerial, 0, 0, "Node num Reading: %d", messagenum);
+    Display_printf(hDisplaySerial, 0, 0, "Node num Reading: %x", messagenum);
 }
 
-static void adcCallback(uint16_t adcValue)
+static void adcCallback(uint16_t adcValue, uint32_t message_num)
 {
     /* Save latest value */
     latestAdcValue = adcValue;
+    messagenum = message_num;
 
     /* Post event */
     Event_post(nodeEventHandle, NODE_EVENT_NEW_ADC_VALUE);

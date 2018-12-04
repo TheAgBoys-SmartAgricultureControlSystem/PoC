@@ -334,7 +334,7 @@ enum NodeRadioOperationStatus NodeRadioTask_sendAdcData(uint16_t data, uint32_t 
     Semaphore_pend(radioAccessSemHandle, BIOS_WAIT_FOREVER);
 
     /* Save data to send */
-    num_data = 0xABCDEF1;
+    //num_data = 0xABCDEF1;
     adcData = data;
     number = num_data;
 
