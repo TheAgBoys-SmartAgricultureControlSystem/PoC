@@ -14,18 +14,18 @@
 // Frequency: 868.00000 MHz
 // Data Format: Serial mode disable 
 // Deviation: 25.000 kHz
-// pktLen: 30 
+// pktLen: 30
 // 802.15.4g Mode: 0 
-// Select bit order to transmit PSDU octets:: 1 
+// Select bit order to transmit PSDU octets:: 1
 // Packet Length Config: Variable 
 // Max Packet Length: 255 
-// Packet Length: 30 
+// Packet Length: 30
 // Packet Data: 255 
 // RX Filter BW: 98.0 kHz
 // Symbol Rate: 50.00000 kBaud
 // Sync Word Length: 32 Bits 
 // TX Power: 14 dBm (requires define CCFG_FORCE_VDDR_HH = 1 in ccfg.c, see CC13xx/CC26xx Technical Reference Manual)
-// Whitening: No whitening 
+// Whitening: No whitening
 
 #include <ti/devices/DeviceFamily.h>
 #include DeviceFamily_constructPath(driverlib/rf_mailbox.h)
@@ -33,7 +33,7 @@
 #include DeviceFamily_constructPath(driverlib/rf_prop_cmd.h)
 #include <ti/drivers/rf/RF.h>
 //#include DeviceFamily_constructPath(rf_patches/rf_patch_cpe_prop.h)
-#include DeviceFamily_constructPath(rf_patches/rf_patch_cpe_multi_protocol.h)                                                                     
+#include DeviceFamily_constructPath(rf_patches/rf_patch_cpe_multi_protocol.h)
 #include DeviceFamily_constructPath(rf_patches/rf_patch_mce_genfsk.h)
 #include DeviceFamily_constructPath(rf_patches/rf_patch_rfe_genfsk.h)
 #include "smartrf_settings.h"
@@ -147,7 +147,7 @@ rfc_CMD_PROP_RADIO_DIV_SETUP_t RF_cmdPropRadioDivSetup =
     .config.bNoFsPowerUp = 0x0,
     .txPower = 0x9F3F,
     .pRegOverride = pOverrides,
-    .centerFreq = 0x0384,
+    .centerFreq = 0x0364,
     .intFreq = 0x8000,
     .loDivider = 0x05,
 };
@@ -166,7 +166,7 @@ rfc_CMD_FS_t RF_cmdFs =
     .startTrigger.pastTrig = 0x0,
     .condition.rule = 0x1,
     .condition.nSkip = 0x0,
-    .frequency = 0x0384,
+    .frequency = 0x0364,
     .fractFreq = 0x0000,
     .synthConf.bTxMode = 0x0,
     .synthConf.refFreq = 0x0,
