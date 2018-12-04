@@ -91,9 +91,9 @@ uint32_t pOverrides[] =
     (uint32_t)0x7AB80603,
     // Synth: Set loop bandwidth after lock to 20 kHz
     (uint32_t)0x00000623,
-    // override_phy_simplelink_long_range_dsss4.xml
-    // PHY: Configure DSSS SF=4 for payload data
-    HW_REG_OVERRIDE(0x5068,0x030C),
+    // override_phy_simplelink_long_range_dsss2.xml
+    // PHY: Configure DSSS SF=2 for payload data
+    HW_REG_OVERRIDE(0x5068,0x0100),
     // PHY: Set SimpleLink Long Range bit-inverted sync word pattern (uncoded, before spreading to fixed-size 64-bit pattern): 0x146F
     HW_REG_OVERRIDE(0x5128,0x146F),
     // PHY: Set SimpleLink Long Range sync word pattern (uncoded, before spreading to fixed-size 64-bit pattern): 0xEB90
