@@ -1,0 +1,24 @@
+Added Pin To Net: NetName=WMCU_RESET Pin=J2-10
+Added Pin To Net: NetName=WMCU_RESET Pin=J2-11
+Added Pin To Net: NetName=WMCU_TMS Pin=J2-13
+Added Pin To Net: NetName=WMCU_TCK Pin=J2-15
+Added Pin To Net: NetName=WMCU_TCK Pin=P4-4
+Added Pin To Net: NetName=WMCU_TMS Pin=P4-5
+Added Pin To Net: NetName=WMCU_RESET Pin=P4-6
+Change Net Name : Old Net Name=DIO12_RXD New Net Name=WMCU_RXD
+Change Net Name : Old Net Name=DIO13_TXD New Net Name=WMCU_TXD
+Change Net Name : Old Net Name=DIO18_RTS/SWO New Net Name=WMCU_SWO
+Added Pin To Net: NetName=5V0_BP Pin=J1-2
+Added Pin To Net: NetName=5V0_BP Pin=P4-10
+Added Net: Name=5V0_BP
+Added Pin To Net: NetName=DCDC_SW Pin=*-33
+Added Pin To Net: NetName=DCDC_SW Pin=L331-1
+Added Net: Name=DCDC_SW
+Added Pin To Net: NetName=RF_SWITCH Pin=*-43
+Added Pin To Net: NetName=RF_SWITCH Pin=J1-16
+Added Pin To Net: NetName=RF_SWITCH Pin=RF Switch-2P
+Added Net: Name=RF_SWITCH
+Added Pin To Net: NetName=RX_TX Pin=*-5
+Added Pin To Net: NetName=RX_TX Pin=C31-1
+Added Pin To Net: NetName=RX_TX Pin=L32-2
+Added Net: Name=RX_TX

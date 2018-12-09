@@ -1,0 +1,43 @@
+Change Component Footprint: Designator=FL1 Old Footprint=0201 Real New Footprint=0402-A
+Change Component Footprint: Designator=L12 Old Footprint=0201 Real New Footprint=0402-A
+Change Component Footprint: Designator=L13 Old Footprint=0201 Real New Footprint=0402-A
+Change Component Footprint: Designator=L14 Old Footprint=0201 Real New Footprint=0402-A
+Change Component Footprint: Designator=L21 Old Footprint=0201 Real New Footprint=0402-A
+Change Component Footprint: Designator=L31 Old Footprint=0402 Real New Footprint=0402-A
+Change Component Footprint: Designator=L32 Old Footprint=0402 Real New Footprint=0402-A
+Change Component Footprint: Designator=L33 Old Footprint=0402 Real New Footprint=0402-A
+Change Component Footprint: Designator=L34 Old Footprint=0402 Real New Footprint=0402-A
+Change Component Footprint: Designator=L41 Old Footprint=0402 Real New Footprint=0402-A
+Change Component Footprint: Designator=C12 Old Footprint=0402 Real New Footprint=RAD-0.3
+Change Component Footprint: Designator=C21 Old Footprint=0402 Real New Footprint=RAD-0.3
+Change Component Footprint: Designator=C32 Old Footprint=0402 Real New Footprint=RAD-0.3
+Change Component Footprint: Designator=C34 Old Footprint=0402 Real New Footprint=RAD-0.3
+Change Component Footprint: Designator=C35 Old Footprint=0402 Real New Footprint=RAD-0.3
+Change Component Footprint: Designator=C41 Old Footprint=0402 Real New Footprint=RAD-0.3
+Change Component Footprint: Designator=C420 Old Footprint=0805 Real New Footprint=RAD-0.3
+Change Component Footprint: Designator=R351 Old Footprint=1206 Real New Footprint=J1-0603
+Change Component Footprint: Designator=C11 Old Footprint=1206 Real New Footprint=RAD-0.3
+Change Component Footprint: Designator=C13 Old Footprint=1206 Real New Footprint=RAD-0.3
+Change Component Footprint: Designator=C14 Old Footprint=1206 Real New Footprint=RAD-0.3
+Change Component Footprint: Designator=C15 Old Footprint=1206 Real New Footprint=RAD-0.3
+Change Component Footprint: Designator=C31 Old Footprint=1206 Real New Footprint=RAD-0.3
+Change Component Footprint: Designator=C33 Old Footprint=1206 Real New Footprint=RAD-0.3
+Change Component Footprint: Designator=C36 Old Footprint=1206 Real New Footprint=RAD-0.3
+Change Component Footprint: Designator=C81 Old Footprint=1206 Real New Footprint=RAD-0.3
+Change Component Footprint: Designator=C91 Old Footprint=1206 Real New Footprint=RAD-0.3
+Change Component Footprint: Designator=C131 Old Footprint=1206 Real New Footprint=RAD-0.3
+Change Component Footprint: Designator=C221 Old Footprint=1206 Real New Footprint=RAD-0.3
+Change Component Footprint: Designator=C231 Old Footprint=1206 Real New Footprint=RAD-0.3
+Change Component Footprint: Designator=C331 Old Footprint=1206 Real New Footprint=RAD-0.3
+Change Component Footprint: Designator=C341 Old Footprint=1206 Real New Footprint=RAD-0.3
+Change Component Footprint: Designator=C342 Old Footprint=1206 Real New Footprint=RAD-0.3
+Change Component Footprint: Designator=C351 Old Footprint=1206 Real New Footprint=RAD-0.3
+Change Component Footprint: Designator=C441 Old Footprint=1206 Real New Footprint=RAD-0.3
+Change Component Footprint: Designator=C481 Old Footprint=1206 Real New Footprint=RAD-0.3
+Change Component Footprint: Designator=C483 Old Footprint=1206 Real New Footprint=RAD-0.3
+Change Component Footprint: Designator=C484 Old Footprint=1206 Real New Footprint=RAD-0.3
+Change Component Footprint: Designator=C485 Old Footprint=1206 Real New Footprint=RAD-0.3
+Change Component Footprint: Designator=L331 Old Footprint=Non-Standard Inductor New Footprint=0402-A
+Change Component Footprint: Designator=CONREVSMA001-SMD Old Footprint=SMA_Jack New Footprint=MMCX2.54-V5
+Change Physical Footprint: Designator=3t Old Footprint=SOT95P237X112-3N New Footprint=SOT95P237X112-3N
+Change Physical Footprint: Designator=Osc Old Footprint=OSC New Footprint=OSC

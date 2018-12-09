@@ -1,0 +1,50 @@
+Change Physical Footprint: Designator=* Old Footprint=CC1352R New Footprint=CC1352R
+Change Physical Footprint: Designator=3t Old Footprint=SOT95P237X112-3N New Footprint=SOT95P237X112-3N
+Change Physical Footprint: Designator=C11 Old Footprint=1206 Real New Footprint=1206 Real
+Change Physical Footprint: Designator=C12 Old Footprint=0402 Real New Footprint=0402 Real
+Change Physical Footprint: Designator=C13 Old Footprint=1206 Real New Footprint=1206 Real
+Change Physical Footprint: Designator=C14 Old Footprint=1206 Real New Footprint=1206 Real
+Change Physical Footprint: Designator=C15 Old Footprint=1206 Real New Footprint=1206 Real
+Change Physical Footprint: Designator=C21 Old Footprint=0402 Real New Footprint=0402 Real
+Change Physical Footprint: Designator=C31 Old Footprint=1206 Real New Footprint=1206 Real
+Change Physical Footprint: Designator=C32 Old Footprint=0402 Real New Footprint=0402 Real
+Change Physical Footprint: Designator=C33 Old Footprint=1206 Real New Footprint=1206 Real
+Change Physical Footprint: Designator=C34 Old Footprint=0402 Real New Footprint=0402 Real
+Change Physical Footprint: Designator=C35 Old Footprint=0402 Real New Footprint=0402 Real
+Change Physical Footprint: Designator=C36 Old Footprint=1206 Real New Footprint=1206 Real
+Change Physical Footprint: Designator=C41 Old Footprint=0402 Real New Footprint=0402 Real
+Change Physical Footprint: Designator=C81 Old Footprint=1206 Real New Footprint=1206 Real
+Change Physical Footprint: Designator=C91 Old Footprint=1206 Real New Footprint=1206 Real
+Change Physical Footprint: Designator=C131 Old Footprint=1206 Real New Footprint=1206 Real
+Change Physical Footprint: Designator=C221 Old Footprint=1206 Real New Footprint=1206 Real
+Change Physical Footprint: Designator=C231 Old Footprint=1206 Real New Footprint=1206 Real
+Change Physical Footprint: Designator=C331 Old Footprint=1206 Real New Footprint=1206 Real
+Change Physical Footprint: Designator=C341 Old Footprint=1206 Real New Footprint=1206 Real
+Change Physical Footprint: Designator=C342 Old Footprint=1206 Real New Footprint=1206 Real
+Change Physical Footprint: Designator=C351 Old Footprint=1206 Real New Footprint=1206 Real
+Change Physical Footprint: Designator=C420 Old Footprint=0805 Real New Footprint=0805 Real
+Change Physical Footprint: Designator=C441 Old Footprint=1206 Real New Footprint=1206 Real
+Change Physical Footprint: Designator=C481 Old Footprint=1206 Real New Footprint=1206 Real
+Change Physical Footprint: Designator=C483 Old Footprint=1206 Real New Footprint=1206 Real
+Change Physical Footprint: Designator=C484 Old Footprint=1206 Real New Footprint=1206 Real
+Change Physical Footprint: Designator=C485 Old Footprint=1206 Real New Footprint=1206 Real
+Change Physical Footprint: Designator=CONREVSMA001-SMD Old Footprint=SMA_Jack New Footprint=SMA_Jack
+Change Physical Footprint: Designator=FL1 Old Footprint=0201 Real New Footprint=0201 Real
+Change Physical Footprint: Designator=J1 Old Footprint=HDR2X10_CEN New Footprint=HDR2X10_CEN
+Change Physical Footprint: Designator=J2 Old Footprint=HDR2X10_CEN New Footprint=HDR2X10_CEN
+Change Physical Footprint: Designator=L12 Old Footprint=0201 Real New Footprint=0201 Real
+Change Physical Footprint: Designator=L13 Old Footprint=0201 Real New Footprint=0201 Real
+Change Physical Footprint: Designator=L14 Old Footprint=0201 Real New Footprint=0201 Real
+Change Physical Footprint: Designator=L21 Old Footprint=0201 Real New Footprint=0201 Real
+Change Physical Footprint: Designator=L31 Old Footprint=0402 Real New Footprint=0402 Real
+Change Physical Footprint: Designator=L32 Old Footprint=0402 Real New Footprint=0402 Real
+Change Physical Footprint: Designator=L33 Old Footprint=0402 Real New Footprint=0402 Real
+Change Physical Footprint: Designator=L34 Old Footprint=0402 Real New Footprint=0402 Real
+Change Physical Footprint: Designator=L41 Old Footprint=0402 Real New Footprint=0402 Real
+Change Physical Footprint: Designator=L331 Old Footprint=Non-Standard Inductor New Footprint=Non-Standard Inductor
+Change Physical Footprint: Designator=Osc Old Footprint=OSC New Footprint=OSC
+Change Physical Footprint: Designator=P1 Old Footprint=HDR1X3 New Footprint=HDR1X3
+Change Physical Footprint: Designator=P4 Old Footprint=HDR1X11 New Footprint=HDR1X11
+Change Physical Footprint: Designator=R351 Old Footprint=1206 Real New Footprint=1206 Real
+Change Physical Footprint: Designator=RF Switch Old Footprint=RF Switch New Footprint=RF Switch
+Change Physical Footprint: Designator=Y1 Old Footprint=R38 New Footprint=R38

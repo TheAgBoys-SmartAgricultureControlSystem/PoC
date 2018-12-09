@@ -1,0 +1,2 @@
+Remove Pin=RF Switch-2P From Net=RF_SWITCH
+Change Component Comment: Designator=P4 Old Comment=Header 11 New Comment=BB02-HJ221-KB1-603000

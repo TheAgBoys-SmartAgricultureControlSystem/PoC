@@ -1,0 +1,16 @@
+Added Pin To Net: NetName=Net3t_1T Pin=3t-1T
+Added Pin To Net: NetName=Net3t_2T Pin=3t-2T
+Added Pin To Net: NetName=Net3t_3T Pin=3t-3T
+Added Pin To Net: NetName=Net*_47 Pin=Osc-1O
+Added Pin To Net: NetName=GND Pin=Osc-2O
+Added Pin To Net: NetName=Net*_46 Pin=Osc-3O
+Added Pin To Net: NetName=Net*_13 Pin=Osc-4O
+Added Pin To Net: NetName=Net*_13 Pin=RF Switch-1P
+Added Pin To Net: NetName=NetC483_1 Pin=RF Switch-3P
+Added Pin To Net: NetName=GND Pin=RF Switch-4P
+Added Pin To Net: NetName=NetC14_2 Pin=RF Switch-5P
+Added Pin To Net: NetName=GND Pin=RF Switch-6P
+Added Pin To Net: NetName=GND Pin=RF Switch-7P
+Added Pin To Net: NetName=NetC36_2 Pin=RF Switch-8P
+Added Room: Name=Sheet1
+Added Room: Name=Sheet2
